@@ -8,14 +8,30 @@ import Peppers from "../assets/peppers.webp"
 import Risotto from "../assets/risotto.webp"
 import SweetPotato from "../assets/sweet-potato.webp"
 import Salad from "../assets/salad.webp"
+import { useState } from "react"
+import RecipeDetail from "../components/RecipeDetail"
 
 export default function RecipesDishDelights() {
 
-    const Recipes = [
-        {
-          "name": "Chickpea Salad",
+    const [selectedRecipe, setSelectedRecipe] = useState('');
+    const [open, setOpen] = useState(false)
+
+    const handleOpen = (recipe) => {
+        setSelectedRecipe(recipe);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setSelectedLandmark(null)
+    };
+
+    const recipes = [
+        { 
+          "recipeId" : "1",
+          "name": "Fresh Chickpea Salad",
           "image": Salad,
-          "mealType": "Salad",
+          "category": "Salad",
           "isVegan": true,
           "ingredients": [
             "1 can chickpeas, drained and rinsed",
@@ -29,10 +45,11 @@ export default function RecipesDishDelights() {
           ],
           "cookingDirections": "In a large bowl, combine all ingredients. Toss well and serve chilled."
         },
-        {
+        { 
+          "recipeId" : "2",
           "name": "Mushroom Risotto",
           "image": Risotto,
-          "mealType": "Main",
+          "category": "Main",
           "isVegan": false,
           "ingredients": [
             "1 cup Arborio rice",
@@ -48,9 +65,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Sauté onions and garlic in butter, add mushrooms, then rice. Deglaze with wine, gradually add broth, and stir until creamy. Finish with Parmesan."
         },
         {
-          "name": "Chocolate Avocado Mousse",
+          "recipeId" : "3",
+          "name": "Vegan Chocolate Mousse",
           "image": Mousse,
-          "mealType": "Dessert",
+          "category": "Dessert",
           "isVegan": true,
           "ingredients": [
             "2 ripe avocados",
@@ -63,9 +81,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Blend all ingredients until smooth. Chill before serving."
         },
         {
+          "recipeId" : "4",
           "name": "Spaghetti Carbonara",
           "image": Carbonara,
-          "mealType": "Main",
+          "category": "Main",
           "isVegan": false,
           "ingredients": [
             "200g spaghetti",
@@ -78,9 +97,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Cook spaghetti. Sauté pancetta with garlic, remove garlic, mix hot pasta with eggs, Parmesan, and pancetta. Serve immediately."
         },
         {
-          "name": "Lentil Soup",
+          "recipeId" : "5",
+          "name": "Lentil Soup with Celery",
           "image": LentilSoup,
-          "mealType": "Soup",
+          "category": "Soup",
           "isVegan": true,
           "ingredients": [
             "1 cup lentils",
@@ -95,9 +115,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Sauté vegetables, add lentils and broth, bring to a boil, then simmer for 30 minutes."
         },
         {
+          "recipeId" : "6",
           "name": "Banana Pancakes",
           "image": Pancakes,
-          "mealType": "Breakfast",
+          "category": "Breakfast",
           "isVegan": false,
           "ingredients": [
             "2 bananas, mashed",
@@ -111,9 +132,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Mix all ingredients, cook small pancakes in butter over medium heat until golden."
         },
         {
+          "recipeId" : "7",
           "name": "Stuffed Bell Peppers",
           "image": Peppers,
-          "mealType": "Main",
+          "category": "Main",
           "isVegan": true,
           "ingredients": [
             "4 bell peppers",
@@ -127,9 +149,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Stuff peppers with mixed ingredients, bake at 180°C for 25 minutes."
         },
         {
-          "name": "Apple Crisp",
+          "recipeId" : "8",
+          "name": "Apple Cinnamon Crisp",
           "image" : AppleCrisp,
-          "mealType": "Dessert",
+          "category": "Dessert",
           "isVegan": false,
           "ingredients": [
             "4 apples, sliced",
@@ -142,9 +165,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Mix apples with cinnamon, top with oat mixture, bake at 180°C for 30 minutes."
         },
         {
-          "name": "Hummus",
+          "recipeId" : "9",
+          "name": "Classic Hummus",
           "image": Hummus,
-          "mealType": "Appetizer",
+          "category": "Appetizer",
           "isVegan": true,
           "ingredients": [
             "1 can chickpeas, drained",
@@ -157,9 +181,10 @@ export default function RecipesDishDelights() {
           "cookingDirections": "Blend all ingredients until smooth. Serve with pita or vegetables."
         },
         {
-            "name": "Roasted Sweet Potato & Quinoa Bowl",
+            "recipeId" : "10",
+            "name": "Sweet Potato & Quinoa Bowl",
             "image": SweetPotato,
-            "mealType": "Main",
+            "category": "Main",
             "isVegan": true,
             "ingredients": [
               "1 large sweet potato, diced",
@@ -177,22 +202,58 @@ export default function RecipesDishDelights() {
           }
     ];
 
+    const [searchItem, setSearchItem] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('all')
+    
+    const filteredRecipes = recipes.filter(recipe => {
+      const matchesSearch = recipe.name.toLowerCase().includes(searchItem.toLowerCase());
+      const matchesCategory = selectedCategory === 'all' || recipe.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    })
 
     return (
         <>
         <div className="main-box">
         <h1> Recipe Library</h1>
+        <div className="customization-box">
+        <div className="search-div">
+        Search by the recipe name:
+        <input type="text" 
+                id="search" 
+                value={searchItem} 
+                onChange={(e) =>
+                    setSearchItem(e.target.value)} 
+                placeholder="Search for the recipe"
+                />
+        </div>
+        <div className="filter-div">
+          Filter by category:
+          <select id="category" value={selectedCategory} onChange={(e) =>
+                setSelectedCategory(e.target.value)}>
+                <option value="all">All</option>
+                <option value="Main">Main</option>
+                <option value="Salad">Salad</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Soup">Soup</option>
+                <option value="Appetizer">Appetizer</option>
+          </select>  
+        </div>
+        </div>
         </div>
 
         <div className="recipe-card-wrapper">
-        {Recipes.map((recipe, index) => (
-          <div key={index} className="recipe-card">
+        {filteredRecipes.map((recipe, index) => (
+          <div key={index} className="recipe-card" onClick={() =>handleOpen(recipe)}>
             <h2>{recipe.name}</h2>
             <img src={recipe.image} alt={recipe.name} height={300}/>
-            <p> {recipe.mealType}{recipe.isVegan ? ", Vegan" : ""}</p>
+            <p> {recipe.category}{recipe.isVegan ? ", Vegan" : ""}</p>
           </div>
         ))}
         </div>
+
+        <RecipeDetail open={open} onClose={handleClose} recipe={selectedRecipe} />
         </>
     )
 }
