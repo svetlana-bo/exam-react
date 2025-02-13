@@ -1,8 +1,8 @@
 export default function Footer() {
 
     return (
-        <>
-        Footer here
-        </>
+        <div className="footer">
+        &copy; 2025 DishDelights
+        </div>
     )
 }

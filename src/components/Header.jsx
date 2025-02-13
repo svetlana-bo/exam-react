@@ -10,7 +10,7 @@ export default function Header() {
             <div nav-links-container>
                 <Link className="top-link" to="">Home</Link>
                 <Link className="top-link" to="recipesDishDelights">Find Recipes</Link>
-                <Link className="top-link" to="recipesPersonal">Your personal favourites</Link>
+                <Link className="top-link" to="recipesPersonal">Your favourites</Link>
                 <Link className="top-link" to="contact">Contact</Link>
                 <Link className="top-link" to="about">About</Link>
             </div> 
