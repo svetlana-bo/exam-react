@@ -33,6 +33,8 @@ export default function RecipesDishDelights() {
           "image": Salad,
           "category": "Salad",
           "isVegan": true,
+          "servings": "2",
+          "timeToMake": "10 minutes",
           "ingredients": [
             "1 can chickpeas, drained and rinsed",
             "1 cucumber, diced",
@@ -51,6 +53,8 @@ export default function RecipesDishDelights() {
           "image": Risotto,
           "category": "Main",
           "isVegan": false,
+          "servings": "4",
+          "timeToMake": "40 minutes",
           "ingredients": [
             "1 cup Arborio rice",
             "4 cups vegetable broth",
@@ -70,6 +74,8 @@ export default function RecipesDishDelights() {
           "image": Mousse,
           "category": "Dessert",
           "isVegan": true,
+          "servings": "2",
+          "timeToMake": "15 minutes",
           "ingredients": [
             "2 ripe avocados",
             "1/4 cup cocoa powder",
@@ -86,6 +92,8 @@ export default function RecipesDishDelights() {
           "image": Carbonara,
           "category": "Main",
           "isVegan": false,
+          "servings": "2",
+          "timeToMake": "20 minutes",
           "ingredients": [
             "200g spaghetti",
             "100g pancetta, diced",
@@ -102,6 +110,8 @@ export default function RecipesDishDelights() {
           "image": LentilSoup,
           "category": "Soup",
           "isVegan": true,
+          "servings": "4",
+          "timeToMake": "30 minutes",
           "ingredients": [
             "1 cup lentils",
             "1 carrot, diced",
@@ -120,6 +130,8 @@ export default function RecipesDishDelights() {
           "image": Pancakes,
           "category": "Breakfast",
           "isVegan": false,
+          "servings": "2",
+          "timeToMake": "20 minutes",
           "ingredients": [
             "2 bananas, mashed",
             "2 eggs",
@@ -137,6 +149,8 @@ export default function RecipesDishDelights() {
           "image": Peppers,
           "category": "Main",
           "isVegan": true,
+          "servings": "4",
+          "timeToMake": "35 minutes",
           "ingredients": [
             "4 bell peppers",
             "1 cup cooked quinoa",
@@ -154,6 +168,8 @@ export default function RecipesDishDelights() {
           "image" : AppleCrisp,
           "category": "Dessert",
           "isVegan": false,
+          "servings": "4",
+          "timeToMake": "40 minutes",
           "ingredients": [
             "4 apples, sliced",
             "1/2 cup oats",
@@ -170,6 +186,8 @@ export default function RecipesDishDelights() {
           "image": Hummus,
           "category": "Appetizer",
           "isVegan": true,
+          "servings": "6",
+          "timeToMake": "10 minutes",
           "ingredients": [
             "1 can chickpeas, drained",
             "2 tbsp tahini",
@@ -186,6 +204,8 @@ export default function RecipesDishDelights() {
             "image": SweetPotato,
             "category": "Main",
             "isVegan": true,
+            "servings": "2",
+            "timeToMake": "30 minutes",
             "ingredients": [
               "1 large sweet potato, diced",
               "1 cup cooked quinoa",

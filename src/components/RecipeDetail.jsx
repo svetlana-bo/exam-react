@@ -1,7 +1,10 @@
-import { CardMedia, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
+import { CardMedia, Dialog, DialogActions, DialogContent } from "@mui/material";
 
+//The function opens the overlay with the recipe details 
 export default function RecipeDetail({open, onClose, recipe}) {
     if (!recipe) return null;
+
+    const colorRed ="#dd4b2a";
 
     return (
         <Dialog 
@@ -27,6 +30,12 @@ export default function RecipeDetail({open, onClose, recipe}) {
           alt={recipe.name}
           sx={{ borderRadius: 1, mb: 2 }}
         />
+        <p>
+          <span style={{ color: colorRed }}>Time to make: </span>{recipe.timeToMake}
+        </p>
+        <p>
+          <span style={{ color: colorRed }}>Servings: </span>{recipe.servings}</p>
+        
         <h3>
           Ingredients
         </h3>
