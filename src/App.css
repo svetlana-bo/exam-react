@@ -1,20 +1,24 @@
+
 .top-nav {
     display: flex;
-    justify-content: center; /* Center the items */
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Center the items */
     align-items: center;
     background-color: #f9f2e2; /* Light background */
-    padding: 15px 0;
+    padding: 15px 0 15px 48px;
+    height: 40px;
     width: 100%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     position: fixed; /* Sticks to top */
     top: 0;
     left: 0;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .nav-logo {
   position: absolute;
-  left: 20px; /* Adjust as needed */
+  left: 0px; /* Adjust as needed */
   top: 50%;
   transform: translateY(-50%);
   height: 50px; /* Adjust logo size */
@@ -22,13 +26,16 @@
 
 .nav-links-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
 .top-link {
     text-decoration: none;
     font-family: "Trebuchet MS", sans-serif;
-    font-size: 24px;
+    font-size: inherit;
     color: #1e2c39;
     font-weight: 600;
     padding: 10px 15px; /* Spacing inside each link */
@@ -38,8 +45,11 @@
 }
 
 .top-link:hover {
-  background-color: #dd4b2a; /* Highlight effect */
-  color: #f9f2e2;
+  background-color:transparent; /* Highlight effect */
+  color:  #dd4b2a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 .main-box {
@@ -49,14 +59,30 @@
   justify-content: center;
   align-items: center;
   padding: 16px; 
+  max-width: 600px;
+  width: 95%;
+  box-sizing: border-box;
+  margin: 56px auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.your-recipes-header {
+  background-color: #f9f2e2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px; 
   width: 95%; 
   max-width: 600px; 
   box-sizing: border-box;
-  margin: 20px auto;
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
 }
-
 
 .button {
   display: inline-block;
@@ -70,12 +96,31 @@
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   margin: 24px;
+  border: none;
+
 }
 
-.button:hover {
+.button:hover, .button-secondary:hover {
   transform: translateY(-2px); /* Slight lift effect */
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
+
+.button-secondary {
+  display: inline-block;
+  background-color: transparent; /* Eye-catching color */
+  color: #dd4b2a;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid #dd4b2a;
+  border-radius: 8px; /* Smooth corners */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 8px;
+
+}
+
 
 .footer {
   width: 100vw; /* Forces it to take full viewport width */
@@ -105,19 +150,23 @@
   justify-content: space-evenly;
   align-items: stretch; 
   gap: 16px;
-  width: 100%;
+  width: 95%;
   margin-top: 32px;
 }
 
 .customization-box {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 24px;
 }
 
 .filter-div, .search-div {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
 }
@@ -134,9 +183,22 @@ input {
     transition: border-color 0.3s ease-in-out; /* Smooth transition */
 }
 
-input:focus, select:focus{
+textarea {
+  width: 200px; 
+  height: 80px; 
+  border: 1px solid #dd4b2a; 
+  border-radius: 10px; 
+  font: inherit;
+  font-size: 0.8em; 
+  outline: none; /* Removes default browser focus outline */
+  transition: border-color 0.3s ease-in-out; /* Smooth transition */
+}
+
+input:focus, select:focus, textarea:focus{
   border: 2px solid #f7a024;
 }
+
+
 
 select { width: 200px; 
   height: auto; 
@@ -152,9 +214,10 @@ select { width: 200px;
 .recipe-card-wrapper{
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 
@@ -181,11 +244,29 @@ select { width: 200px;
   list-style-type: disc;
 }
 
+.input-instructions, .input-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 @media (min-width: 768px) {
   .main-box {
     max-width: 1200px;
     padding: 32px;
     margin: 50px auto;
+}
+
+.your-recipes-header {
+    max-width: 1200px;
+    padding: 32px;
 }
   .about-box {
       flex-direction: row;
@@ -195,6 +276,7 @@ select { width: 200px;
   .recipe-card-wrapper {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: auto;
  } 

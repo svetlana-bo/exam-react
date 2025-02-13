@@ -1,10 +1,23 @@
-import { Button, CardMedia, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
+import { CardMedia, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 
 export default function RecipeDetail({open, onClose, recipe}) {
     if (!recipe) return null;
 
     return (
-        <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+        <Dialog 
+          open={open} 
+          onClose={onClose} 
+          fullWidth
+          maxWidth="xs"
+          sx={{
+            "& .MuiDialog-paper": {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+        
+          },
+          }}
+          >
             <h2>{recipe.name}</h2>
         <DialogContent>
         <CardMedia
