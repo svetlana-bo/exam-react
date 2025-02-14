@@ -62,7 +62,7 @@
   max-width: 600px;
   width: 95%;
   box-sizing: border-box;
-  margin: 56px auto;
+  margin: 88px auto 0;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 100%;
@@ -132,6 +132,7 @@
   padding: 15px 0;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
   font-size: 16px;
+  margin-top: 16px;
 }
 
 
@@ -261,12 +262,13 @@ form {
   .main-box {
     max-width: 1200px;
     padding: 32px;
-    margin: 50px auto;
+    
 }
 
 .your-recipes-header {
     max-width: 1200px;
     padding: 32px;
+    margin-top: 16px;
 }
   .about-box {
       flex-direction: row;

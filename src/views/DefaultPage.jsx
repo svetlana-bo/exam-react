@@ -5,7 +5,7 @@ export default function DefaultPage() {
 
     return (
         <div className="main-box">
-        <img src={mainLogo} alt="Logo Image" style={{ width: "400px", height: "auto" }} />
+        <img src={mainLogo} alt="Logo Image" style={{ width: "300px", height: "auto" }} />
         <h1>DishDelights</h1>
         <p>Welcome to DishDelights, your go-to destination for discovering and enjoying incredible recipes from around the world. 
         <br />
