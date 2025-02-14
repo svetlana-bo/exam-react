@@ -8,16 +8,19 @@ export default function RecipesPersonal() {
     const [isEditing, setIsEditing] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
 
+
+    //update local storage when the recipe state changes 
     useEffect(() => {
         localStorage.setItem('recipes', JSON.stringify(recipes));
     }, [recipes]);
 
-
+    //handle the changes in the input fields
     function handleChange(e) {
         const { name, value } = e.target;
         setCurrentRecipe({ ...currentRecipe, [name]: value });
     }
-
+    
+    // handle form submission to add or edit a recipe
     function handleSubmit(e) {
         e.preventDefault();
         if (isEditing) {
@@ -33,11 +36,13 @@ export default function RecipesPersonal() {
         setCurrentRecipe({ title: '', content: '' });
     }
 
+    //handles deleting the recipe 
     function handleDelete(index) {
         const updatedRecipes = recipes.filter((_, i) => i !== index);
         setRecipes(updatedRecipes);
     }
 
+    //handles editing the recipe by adding the data to the form
     function handleEdit(index) {
         setCurrentRecipe(recipes[index]);
         setIsEditing(true);

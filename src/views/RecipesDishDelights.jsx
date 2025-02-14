@@ -26,6 +26,7 @@ export default function RecipesDishDelights() {
         setSelectedLandmark(null)
     };
 
+    //defining the recipe data
     const recipes = [
         { 
           "recipeId" : "1",
